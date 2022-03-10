@@ -17,32 +17,28 @@
                         <div class="col-md-8 col-lg-6 col-xl-4">
                             <div class="card shadow-0 border">
                                 <div class="card-body p-4">
-                                    <h4 class="mb-1 sfw-normal">Ciudad: <strong>Madrid</strong></h4>
-                                    <h5 class="mb-1 sfw-normal">Código postal: <strong>C28000</strong></h5>
-                                    <p class="mb-2">Current temperature: <strong>5.42°C</strong></p>
-                                    <p>Feels like: <strong>4.37°C</strong></p>
-                                    <p>Max: <strong>6.11°C</strong>, Min: <strong>3.89°C</strong></p>
+                                    <h4 class="mb-1 sfw-normal">City: <strong id="name"></strong></h4>
+                                    <h5 class="mb-1 sfw-normal">Zip code: <strong>{{ $_POST['zip_code'] }}</strong></h5>
+                                    <p class="temperatura mb-2">Current temperature: <strong id="temp"></strong></p>
+                                    <p>Feels like: <strong id="feels_like"></strong></p>
+                                    <p>Max: <strong id="temp_max"></strong>, Min: <strong id="temp_min"></strong></p>
                                     <div class="d-flex flex-row align-items-center">
-                                        <p class="mb-0 me-4">Scattered Clouds</p>
-                                        <i class="fas fa-cloud fa-3x" style="color: #eee;"></i>
+                                        <p class="mb-0 me-4">Main: <strong id="main"></strong></p>
+                                        <img src="http://openweathermap.org/img/w/02n.png" alter="icono tiempo">
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
 
-                        <div class="col-md-8 col-lg-6 col-xl-4 card m-5">
+                        <!-- <div class="col-md-8 col-lg-6 col-xl-4 card m-5"> 
                             <div class="card-body p-4">
 
-                                <div id="demo3" class="carousel slide" data-ride="carousel">
-                                    <!-- Indicators -->
+                                 <div id="demo3" class="carousel slide" data-ride="carousel">
                                     <ul class="carousel-indicators mb-0">
                                         <li data-target="#demo3" data-slide-to="0"></li>
                                         <li data-target="#demo3" data-slide-to="1"></li>
                                         <li data-target="#demo3" data-slide-to="2" class="active"></li>
                                     </ul>
-                                    <!-- Carousel inner -->
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <div class="d-flex justify-content-around text-center  pb-3 pt-2">
@@ -74,25 +70,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
 
                             </div>
-                        </div>
+                        </div> 
 
 
 
 
                     </div>
 
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-md-10 col-lg-8 col-xl-6">
+                    <div class="row d-flex justify-content-center align-items-center h-100">-->
+                        <div class="col-md-8 col-lg-6 col-xl-4">
                             <div class="card shadow-0 border">
                                 <div class="card-body p-4">
                                     <h4 class="mb-1 sfw-normal">Top 5 of the coldest areas sought after</h4>
                                     <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item">Madrid <p class="text-end ">18°C</p>
+                                        <li class="list-group-item">Madrid <p class="text-end "><strong>18°C</strong></p>
                                         </li>
-                                        <li class="list-group-item">Madrid <p class="text-end ">18°C</p>
+                                        <li class="list-group-item">Madrid <p class="text-end "><strong>18°C</strong></p>
                                         </li>
                                         <li class="list-group-item">Madrid <p class="text-end ">18°C</p>
                                         </li>
@@ -104,13 +100,49 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- </div> -->
+
+
+
+
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>
-    </div>
+        <input type="hidden" id="zip_code" name="zip_code" value="{{ $_POST['zip_code'] }}">
+        <script>
+            var ciudad = $("#zip_code").val();
+            var url =
+                "http://api.openweathermap.org/data/2.5/weather?q=" +
+                ciudad +
+                ",es&units=metric&lang=es&appid=1ebe8fb6c5d2654d9ceb6e243540f115";
+            $.ajax({
+                url: url,
+                type: "get",
+                dataType: "json",
+                cache: false,
+                error: function() {
+                    $("#contenido").html(
+                        "<div id='error'>Ciudad no encontrada. Por favor, inserte de nuevo el nombre de otra ciudad.<div>"
+                    );
+                },
+                data: {
+                    ciudad: ciudad
+                },
+                success: function(resultado) {
+                    icon = "http://openweathermap.org/img/w/" + resultado.weather[0].icon + ".png"; //http://openweathermap.org/img/w/02n.png
+                    $("#name").html(resultado.name);
+                    $("#temp").html(resultado.main.temp);
+                    $("#feels_like").html(resultado.main.feels_like);
+                    $("#main").html(resultado.weather[0].main);
+                    $("#icon").attr("src", icon);
+                    $("#temp_max").html(resultado.main.temp_max);
+                    $("#temp_min").html(resultado.main.temp_min);
+                    $("#speed").html(resultado.wind.speed);
+                },
+                error: function(error) {
+                    window.location.href = "{{ url('weather') }}";
+                }
+            });
+        </script>
 </x-app-layout>
