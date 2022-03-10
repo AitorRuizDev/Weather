@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WeatherController;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,13 +36,18 @@ Route::get('/', function () {
 //     return view('view');
 // })->middleware(['auth'])->name('view');
 
-Route::get('/top', function () {
-    return view('top');
-})->middleware(['auth'])->name('top');
+// Route::get('/top', function () {
+//     return view('top');
+// })->middleware(['auth'])->name('top');
 
 Route::get('/weather.index', [WeatherController::class, 'index'])->name('weather.index');
-Route::get('/weather.create', [WeatherController::class, 'create'])->name('weather.create');
-Route::post('/weather.store', [WeatherController::class, 'store'])->name('weather.store');
-Route::get('/weather.view', [WeatherController::class, 'show'])->name('weather.view');
+// Route::get('/weather.create', [WeatherController::class, 'create'])->name('weather.create');
+// Route::post('/weather.store', [WeatherController::class, 'store'])->name('weather.store');
+// Route::get('/weather.view/{weather}',[WeatherController::class, 'show'])->name('weather.view');
+// // Route::get('/weather.view/{weather}', [WeatherController::class, 'show'])->name('weather.view');
+Route::get('/weather.top', [WeatherController::class, 'top'])->name('weather.top');
+
+Route::resources(['weather' => WeatherController::class]);
+
 
 

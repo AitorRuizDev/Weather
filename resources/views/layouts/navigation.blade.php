@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('weather.create')" :active="request()->routeIs('weather.create')">
                         {{ __('Weather') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('top')" :active="request()->routeIs('top')">
+                    <x-nav-link :href="route('weather.top')" :active="request()->routeIs('weather.top')">
                         {{ __('Top') }}
                     </x-nav-link>
                 </div>

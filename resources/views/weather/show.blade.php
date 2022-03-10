@@ -18,7 +18,6 @@
                             <div class="card shadow-0 border">
                                 <div class="card-body p-4">
                                     <h4 class="mb-1 sfw-normal">City: <strong id="name">{{ $weather->name }}</strong></h4>
-                                    <!-- <h5 class="mb-1 sfw-normal">Zip code: <strong>{{ $_POST['zip_code'] }}</strong></h5> -->
                                     <p class="temperatura mb-2">Current temperature: <strong id="temp">{{ $weather->temp }}</strong></p>
                                     <p>Feels like: <strong id="feels_like"></strong></p>
                                     <p>Max: <strong id="temp_max"></strong>, Min: <strong id="temp_min"></strong></p>
@@ -81,7 +80,7 @@
                     </div>
 
                     <div class="row d-flex justify-content-center align-items-center h-100">-->
-                        <div class="col-md-8 col-lg-6 col-xl-4">
+                        <!-- <div class="col-md-8 col-lg-6 col-xl-4">
                             <div class="card shadow-0 border">
                                 <div class="card-body p-4">
                                     <h4 class="mb-1 sfw-normal">Top 5 of the coldest areas sought after</h4>
@@ -99,7 +98,7 @@
                                     </ol>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- </div> -->
 
 
