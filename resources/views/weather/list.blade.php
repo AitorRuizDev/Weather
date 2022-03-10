@@ -13,15 +13,17 @@
                             <img src="{{ asset('img/logo.svg') }}" alt="ThatzWeather logo" title="ThatzWeather logo">
                         </div>
                     </div>
-                    <!-- <div class="row d-flex justify-content-center align-items-center h-100">
+
+                    @if($weathers->isEmpty())
+                    <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-md-10 col-lg-8 col-xl-6">
                             <div class="alert alert-primary" role="alert">
                                 You currently haven't recorded any temperatures :(
                             </div>
-
+                            <a href="{{url('/weather/create')}}"><button type="button" class="btn btn-primary">I want to insert</button></a>
                         </div>
-                    </div> -->
-
+                    </div>
+                    @else
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-md-10 col-lg-8 col-xl-6">
                             <div class="card shadow-0 border">
@@ -49,6 +51,10 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+
+
+
                     @if ($message = Session::get('success'))
                     <div class="m-5 alert alert-success">
                         <p>{{ $message }}</p>
