@@ -14,6 +14,17 @@
                         </div>
                     </div>
 
+                    @if(count($weathers)<=0)
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-md-10 col-lg-8 col-xl-6">
+                            <div class="alert alert-primary" role="alert">
+                                You currently haven't recorded any temperatures :(
+                            </div>
+                            <a href="{{url('/weather/create')}}"><button type="button" class="btn btn-primary">I want to insert</button></a>
+                        </div>
+                    </div>
+                    @else
+
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-md-10 col-lg-8 col-xl-6">
                             <div class="card shadow-0 border">
@@ -30,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-
+                    @endif
                 </div>
             </div>
         </div>

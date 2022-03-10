@@ -77,10 +77,17 @@
                     dataType: "json",
                     cache: false,
                     error: function() {
+                        $("#zip_code").val("");
                         $("#zip_code").css("border-color", "red");
                         $("#zip_code").attr("placeholder", "Zip code is required. Please enter good zip code");
                         $("#zip_code").on("focusout", function() {
                             $("#zip_code").css("border-color", "black");
+                            $("#zip_code").attr("placeholder", "Enter zip code");
+                            $("#zip_code").attr("focus", "in");
+                        })
+                        $("#zip_code").on("focusin", function() {
+                            $("#zip_code").css("border-color", "black");
+                            $("#zip_code").attr("placeholder", "Enter zip code");
                         })
                     },
                     data: {
@@ -103,6 +110,10 @@
                 $("#zip_code").css("border-color", "red");
                 $("#zip_code").attr("placeholder", "Zip code is required. Please enter zip code");
                 $("#zip_code").on("focusout", function() {
+                    $("#zip_code").css("border-color", "black");
+                    $("#zip_code").attr("placeholder", "Enter zip code");
+                })
+                $("#zip_code").on("focusin", function() {
                     $("#zip_code").css("border-color", "black");
                     $("#zip_code").attr("placeholder", "Enter zip code");
                 })
