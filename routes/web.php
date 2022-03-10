@@ -29,6 +29,10 @@ Route::get('/view', function () {
     return view('view');
 })->middleware(['auth'])->name('view');
 
+Route::match(['get', 'post'], '/view', function () {
+    return view('view');
+})->middleware(['auth'])->name('view');
+
 Route::get('/top', function () {
     return view('top');
 })->middleware(['auth'])->name('top');
