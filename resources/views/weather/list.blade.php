@@ -13,17 +13,15 @@
                             <img src="{{ asset('img/logo.svg') }}" alt="ThatzWeather logo" title="ThatzWeather logo">
                         </div>
                     </div>
-                    @empty($weathers)
-                    <div class="row d-flex justify-content-center align-items-center h-100">
+                    <!-- <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-md-10 col-lg-8 col-xl-6">
                             <div class="alert alert-primary" role="alert">
                                 You currently haven't recorded any temperatures :(
                             </div>
 
                         </div>
-                    </div>
-                    @endempty
-                    @isset($weathers)
+                    </div> -->
+
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-md-10 col-lg-8 col-xl-6">
                             <div class="card shadow-0 border">
@@ -43,7 +41,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             <td><a class="link-dark" href="{{ route('weather.show', $weather->id) }}">{{ $weather->name }}</a></td>
-                                            <td>{{ $weather->temp }}</td>
+                                            <td>{{ $weather->temp }}ºC</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -51,7 +49,6 @@
                             </div>
                         </div>
                     </div>
-                    @endisset
                     @if ($message = Session::get('success'))
                     <div class="m-5 alert alert-success">
                         <p>{{ $message }}</p>

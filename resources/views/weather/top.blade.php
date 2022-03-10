@@ -18,11 +18,11 @@
                         <div class="col-md-10 col-lg-8 col-xl-6">
                             <div class="card shadow-0 border">
                                 <div class="card-body p-4">
-                                    <h4 class="mb-1 sfw-normal">Top 5 of the coldest areas sought after</h4>
+                                    <h4 class="mb-1 sfw-normal">Top of the coldest areas sought after</h4>
                                     <ol class="list-group list-group-numbered">
                                         @foreach ($weathers as $weather)
                                         <li class="list-group-item"> {{ $weather->name }}
-                                            <p class="text-end ">{{ $weather->temp }}</p>
+                                            <p class="text-end "><strong>{{ $weather->temp }}ºC</strong></p>
                                         </li>
                                         @endforeach
                                     </ol>
