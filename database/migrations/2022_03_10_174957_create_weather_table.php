@@ -16,7 +16,14 @@ return new class extends Migration
         Schema::create('weather', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('zip_code');
             $table->string('temp');
+            $table->string('feels_like');
+            $table->string('main');
+            $table->string('icon');
+            $table->string('temp_max');
+            $table->string('temp_min');
+            $table->string('speed');
             $table->timestamps();
         });
     }

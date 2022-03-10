@@ -9,6 +9,6 @@ class Weather extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name','temp'
+        'name', 'temp', 'zip_code', 'feels_like', 'main', 'icon', 'temp_max', 'temp_min', 'speed'
     ];
 }

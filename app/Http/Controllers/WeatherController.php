@@ -39,13 +39,27 @@ class WeatherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'unique:weather'],
+            'name' => 'required',
             'temp' => 'required',
+            'zip_code' => ['required', 'unique:weather'],
+            'feels_like' => 'required',
+            'main' => 'required',
+            'icon' => 'required',
+            'temp_max' => 'required',
+            'temp_min' => 'required',
+            'speed' => 'required',
         ]);
 
         $weather = new Weather([
             'name' => $request->get('name'),
             'temp' => $request->get('temp'),
+            'zip_code' => $request->get('zip_code'),
+            'feels_like' => $request->get('feels_like'),
+            'main' => $request->get('main'),
+            'icon' => $request->get('icon'),
+            'temp_max' => $request->get('temp_max'),
+            'temp_min' => $request->get('temp_min'),
+            'speed' => $request->get('speed'),
         ]);
 
         $weather->save();

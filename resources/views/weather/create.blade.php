@@ -25,6 +25,13 @@
                                 <!--  Test  -->
                                 <input type="hidden" id="name" name="name">
                                 <input type="hidden" id="temp" name="temp">
+                                <input type="hidden" id="feels_like" name="feels_like">
+                                <input type="hidden" id="temp_max" name="temp_max">
+                                <input type="hidden" id="temp_min" name="temp_min">
+                                <input type="hidden" id="main" name="main">
+                                <input type="hidden" id="icon" name="icon">
+                                <input type="hidden" id="speed" name="speed">
+
                                 <!-- End Test -->
                                 <div class="d-grid gap-2 mb-3">
                                     <div class="d-grid gap-2">
@@ -80,10 +87,15 @@
                         ciudad: ciudad
                     },
                     success: function(resultado) {
-                        console.log("good");
-
+                        icon = "http://openweathermap.org/img/w/" + resultado.weather[0].icon + ".png"; //http://openweathermap.org/img/w/02n.png
                         $("#name").val(resultado.name);
                         $("#temp").val(resultado.main.temp);
+                        $("#feels_like").val(resultado.main.feels_like);
+                        $("#main").val(resultado.weather[0].main);
+                        $("#icon").val(icon);
+                        $("#temp_max").val(resultado.main.temp_max);
+                        $("#temp_min").val(resultado.main.temp_min);
+                        $("#speed").val(resultado.wind.speed);
                         $("#form").submit();
                     }
                 });

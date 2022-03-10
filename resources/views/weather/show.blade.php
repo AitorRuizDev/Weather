@@ -18,12 +18,13 @@
                             <div class="card shadow-0 border">
                                 <div class="card-body p-4">
                                     <h4 class="mb-1 sfw-normal">City: <strong id="name">{{ $weather->name }}</strong></h4>
+                                    <p class="temperatura mb-2">Zip code: <strong id="zip_code">{{ $weather->zip_code }}</strong></p>
                                     <p class="temperatura mb-2">Current temperature: <strong id="temp">{{ $weather->temp }}</strong></p>
-                                    <p>Feels like: <strong id="feels_like"></strong></p>
-                                    <p>Max: <strong id="temp_max"></strong>, Min: <strong id="temp_min"></strong></p>
+                                    <p>Feels like: <strong id="feels_like">{{ $weather->feels_like }}</strong></p>
+                                    <p>Max: <strong id="temp_max">{{ $weather->temp_max }}</strong>, Min: <strong id="temp_min">{{ $weather->temp_min }}</strong></p>
                                     <div class="d-flex flex-row align-items-center">
-                                        <p class="mb-0 me-4">Main: <strong id="main"></strong></p>
-                                        <img src="http://openweathermap.org/img/w/02n.png" alter="icono tiempo">
+                                        <p class="mb-0 me-4">Main: <strong id="main">{{ $weather->main }}</strong></p>
+                                        <img src="{{ $weather->icon }}" alter="icono tiempo">
                                     </div>
                                 </div>
                             </div>
