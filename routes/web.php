@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WeatherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,28 +14,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__.'/auth.php';
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
-Route::get('/weather', function () {
-    return view('weather');
-})->middleware(['auth'])->name('weather');
+// Route::get('/weather', function () {
+//     return view('weather');
+// })->middleware(['auth'])->name('weather');
 
-Route::get('/view', function () {
-    return view('view');
-})->middleware(['auth'])->name('view');
+// Route::get('/view', function () {
+//     return view('view');
+// })->middleware(['auth'])->name('view');
 
-Route::match(['get', 'post'], '/view', function () {
-    return view('view');
-})->middleware(['auth'])->name('view');
+// Route::match(['get', 'post'], '/view', function () {
+//     return view('view');
+// })->middleware(['auth'])->name('view');
 
 Route::get('/top', function () {
     return view('top');
 })->middleware(['auth'])->name('top');
 
-require __DIR__.'/auth.php';
+Route::get('/weather.index', [WeatherController::class, 'index'])->name('weather.index');
+Route::get('/weather.create', [WeatherController::class, 'create'])->name('weather.create');
+Route::post('/weather.store', [WeatherController::class, 'store'])->name('weather.store');
+Route::get('/weather.view', [WeatherController::class, 'show'])->name('weather.view');
+
+
