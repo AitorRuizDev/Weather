@@ -36,10 +36,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                        $i = 0;
+                                        @endphp
                                         @foreach ($weathers as $weather)
                                         <tr>
-                                            <td>{{ $weather->id }}</td>
-                                            <td>{{ $weather->name }}</td>
+                                            <td>{{ ++$i }}</td>
+                                            <td><a class="link-dark" href="{{ route('weather.show', $weather->id) }}">{{ $weather->name }}</a></td>
                                             <td>{{ $weather->temp }}</td>
                                         </tr>
                                         @endforeach

@@ -20,16 +20,11 @@
                                 <div class="card-body p-4">
                                     <h4 class="mb-1 sfw-normal">Top 5 of the coldest areas sought after</h4>
                                     <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item">Madrid <p class="text-end ">18°C</p>
+                                        @foreach ($weathers as $weather)
+                                        <li class="list-group-item"> {{ $weather->name }}
+                                            <p class="text-end ">{{ $weather->temp }}</p>
                                         </li>
-                                        <li class="list-group-item">Madrid <p class="text-end ">18°C</p>
-                                        </li>
-                                        <li class="list-group-item">Madrid <p class="text-end ">18°C</p>
-                                        </li>
-                                        <li class="list-group-item">Madrid <p class="text-end ">18°C</p>
-                                        </li>
-                                        <li class="list-group-item">Madrid <p class="text-end ">18°C</p>
-                                        </li>
+                                        @endforeach
                                     </ol>
                                 </div>
                             </div>
